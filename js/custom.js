@@ -4,7 +4,7 @@
 			const target = document.querySelector(this.getAttribute('href'));
 			if (target) {
 				e.preventDefault();
-				const offset = document.querySelector('header').offsetHeight - 20;
+				const offset = document.querySelector('header').offsetHeight;
 				const topPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
 				window.scrollTo({
 					top: topPos,
