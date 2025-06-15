@@ -1,20 +1,35 @@
-(function($) {
-    "use strict";
-	
+(function ($) {
+	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		anchor.addEventListener('click', function (e) {
+			const target = document.querySelector(this.getAttribute('href'));
+			if (target) {
+				e.preventDefault();
+				const offset = document.querySelector('header').offsetHeight - 20;
+				const topPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+				window.scrollTo({
+					top: topPos,
+					behavior: 'smooth'
+				});
+			}
+		});
+	});
+
+	"use strict";
+
 	/* ..............................................
 	Loader 
-    ................................................. */
-	
-	$(window).on('load', function() { 
-		$('.preloader').fadeOut(); 
-		$('#preloader').delay(550).fadeOut('slow'); 
-		$('body').delay(450).css({'overflow':'visible'});
+	................................................. */
+
+	$(window).on('load', function () {
+		$('.preloader').fadeOut();
+		$('#preloader').delay(550).fadeOut('slow');
+		$('body').delay(450).css({ 'overflow': 'visible' });
 	});
-	
+
 	/* ..............................................
-    Fixed Menu
-    ................................................. */
-    
+	Fixed Menu
+	................................................. */
+
 	$(window).on('scroll', function () {
 		if ($(window).scrollTop() > 50) {
 			$('.top-header').addClass('fixed-menu');
@@ -22,42 +37,42 @@
 			$('.top-header').removeClass('fixed-menu');
 		}
 	});
-	
+
 	/* ..............................................
-    Gallery
-    ................................................. */
-	
+	Gallery
+	................................................. */
+
 	$('#slides').superslides({
 		inherit_width_from: '.cover-slides',
 		inherit_height_from: '.cover-slides',
 		play: 5000,
 		animation: 'fade',
 	});
-	
-	$( ".cover-slides ul li" ).append( "<div class='overlay-background'></div>" );
-	
+
+	$(".cover-slides ul li").append("<div class='overlay-background'></div>");
+
 	/* ..............................................
-    Map Full
-    ................................................. */
-	
-	$(document).ready(function(){ 
+	Map Full
+	................................................. */
+
+	$(document).ready(function () {
 		$(window).on('scroll', function () {
-			if ($(this).scrollTop() > 100) { 
-				$('#back-to-top').fadeIn(); 
-			} else { 
-				$('#back-to-top').fadeOut(); 
-			} 
-		}); 
-		$('#back-to-top').click(function(){ 
-			$("html, body").animate({ scrollTop: 0 }, 600); 
-			return false; 
-		}); 
+			if ($(this).scrollTop() > 100) {
+				$('#back-to-top').fadeIn();
+			} else {
+				$('#back-to-top').fadeOut();
+			}
+		});
+		$('#back-to-top').click(function () {
+			$("html, body").animate({ scrollTop: 0 }, 600);
+			return false;
+		});
 	});
-	
+
 	/* ..............................................
-    Special Menu
-    ................................................. */
-	
+	Special Menu
+	................................................. */
+
 	var Container = $('.container');
 	Container.imagesLoaded(function () {
 		var portfolio = $('.special-menu');
@@ -72,11 +87,11 @@
 			itemSelector: '.special-grid'
 		});
 	});
-	
+
 	/* ..............................................
-    BaguetteBox
-    ................................................. */
-	
+	BaguetteBox
+	................................................. */
+
 	baguetteBox.run('.tz-gallery', {
 		animation: 'fadeIn',
 		noScrollbars: true
