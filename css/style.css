@@ -583,7 +583,7 @@ button:focus{
     margin-right: 20px;
 }
 
-.contact-imfo-box h4 {
+.contact-imfo-box .title {
     margin: 0px;
     margin-top: 5px;
 	color: #ffffff;
